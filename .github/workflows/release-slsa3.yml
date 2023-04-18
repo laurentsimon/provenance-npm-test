@@ -10,7 +10,6 @@ permissions: read-all
 jobs:
   build:
     permissions:
-      contents: read
       actions: read # for detecting the Github Actions environment.
       id-token: write # for creating OIDC tokens for signing.
       packages: write # for uploading attestations.
