@@ -51,12 +51,12 @@ sha512sum "$tarball_file"
 
 # pkg:npm/%40laurentsimon/provenance-npm-test@1.0.0 is URL encoded.
 # note: package name is versioned, but it's different from the repo tag.
-echo slsa-verifier verify-npm-package "$tarball_url" \
-    --attestations-path "$attestations_url" \
+echo slsa-verifier verify-npm-package "$tarball_file" \
+    --attestations-path "$attestations_file" \
     --source-uri github.com/repo/name \
     --package-name "$package_name"
 
-echo slsa-verifier verify-npm-package "$tarball_url" \
+echo slsa-verifier verify-npm-package "$tarball_file" \
     --provenance-path "$provenance_attestation_file" \
     --publish-attestation-path "$publish_attestation_file" \
     --source-uri github.com/repo/name \
