@@ -18,7 +18,7 @@ jobs:
     uses: laurentsimon/slsa-github-generator/.github/workflows/builder_nodejs_slsa3.yml@feat/sec-upload-att
     with:
       access: public
-      #npm-publish: true
+      npm-publish: true
       run-scripts: ci, build
     secrets:
       node-auth-token: ${{ secrets.NPM_TOKEN }}
