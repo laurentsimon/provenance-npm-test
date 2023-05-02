@@ -14,10 +14,11 @@ jobs:
       id-token: write # for creating OIDC tokens for signing.
       packages: write # for uploading attestations.
       contents: write # For uploading release assets.
-    uses: slsa-framework/slsa-github-generator/.github/workflows/builder_nodejs_slsa3.yml@v1.6.0-rc.0
+    #uses: slsa-framework/slsa-github-generator/.github/workflows/builder_nodejs_slsa3.yml@v1.6.0-rc.0
+    uses: laurentsimon/slsa-github-generator/.github/workflows/builder_nodejs_slsa3.yml@feat/sec-upload-att
     with:
       access: public
-      npm-publish: true
+      #npm-publish: true
       run-scripts: ci, build
     secrets:
       node-auth-token: ${{ secrets.NPM_TOKEN }}
