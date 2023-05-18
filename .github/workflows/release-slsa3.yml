@@ -12,10 +12,8 @@ jobs:
     permissions:
       actions: read # for detecting the Github Actions environment.
       id-token: write # for creating OIDC tokens for signing.
-      #packages: write # for uploading attestations.
       contents: read # For uploading release assets.
-    #uses: slsa-framework/slsa-github-generator/.github/workflows/builder_nodejs_slsa3.yml@v1.6.0-rc.0
-    uses: laurentsimon/slsa-github-generator/.github/workflows/builder_nodejs_slsa3.yml@feat/sec-upload-att
+    uses: slsa-framework/slsa-github-generator/.github/workflows/builder_nodejs_slsa3.yml@v1.6.0
     with:
       access: public
       npm-publish: true
