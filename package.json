@@ -24,8 +24,7 @@
   },
   "homepage": "https://github.com/laurentsimon/provenance-npm-test#readme",
   "dependencies": {
-    "@actions/core": "^1.10.0",
-    "d3-array": "3.0.1"
+    "@actions/core": "^1.10.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",
