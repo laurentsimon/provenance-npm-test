@@ -10,6 +10,8 @@ fi
 package_name="$1"
 
 # Download the provenance file.
+# curl -H "Accept: application/vnd.npm.install-v1+json" https://registry.npmjs.org/%40laurentsimon%2Fprovenance-npm-test | jq
+# https://github.com/npm/registry/blob/master/docs/responses/package-metadata.md
 attestations_url=$(npm view "$package_name" --json | jq -r '.dist.attestations.url')
 
 if [ "$attestations_url" == "null" ]; then
@@ -24,11 +26,12 @@ publish_attestation_file=$(mktemp "/tmp/publish.intoto.sigstore.XXXXXXX")
 attestations_file=$(mktemp "/tmp/attestations.intoto.sigstore.XXXXXXX")
 
 # The SLSA provenance.
-curl -s "$attestations_url" | jq -r '.attestations[0]' > "$provenance_attestation_file"
+curl -s "$attestations_url" | jq -r '.attestations[1]' > "$provenance_attestation_file"
 # The publish attestation.
-curl -s "$attestations_url" | jq -r '.attestations[1]' > "$publish_attestation_file"
+curl -s "$attestations_url" | jq -r '.attestations[0]' > "$publish_attestation_file"
 # Both attestations
-curl -s "$attestations_url" | jq -r '.attestations' > "$attestations_file"
+curl -s "$attestations_url" > "$attestations_file"
+#curl -s "$attestations_url" | jq -r '.attestations' > "$attestations_file"
 
 # Download the tarball in a "trusted folder".
 tarball_url=$(npm view "$package_name" --json | jq -r '.dist.tarball')
